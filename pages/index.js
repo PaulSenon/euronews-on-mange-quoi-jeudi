@@ -63,7 +63,7 @@ export default function Home() {
         </h1>
       </main>
 
-      <footer className={styles.footer}>Broad to you by Euronews SDD</footer>
+      <footer className={styles.footer}>Brought to you by Euronews SDD</footer>
     </div>
   );
 }
