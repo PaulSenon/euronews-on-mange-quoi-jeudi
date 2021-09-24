@@ -25,7 +25,7 @@ export default function Home() {
     : today.getDay() > 4
     ? 'Jeudi prochain'
     : 'Jeudi';
-  const offset = 0;
+  const offset = 1;
 
   const [hasLoaded, setHasLoaded] = useState(false);
 
