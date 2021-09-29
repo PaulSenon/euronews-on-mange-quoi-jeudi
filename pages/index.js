@@ -32,7 +32,7 @@ export default function Home() {
     : today.getDay() > 4 || (isJeudi && today.getHours() > 13)
     ? 'Jeudi prochain'
     : 'Jeudi';
-  const offset = 0;
+  const offset = 1;
 
   const [hasLoaded, setHasLoaded] = useState(false);
 
