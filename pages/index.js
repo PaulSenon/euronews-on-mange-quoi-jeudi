@@ -28,6 +28,8 @@ export default function Home() {
   const meals = ['🍕', '🍔🍟'];
   const todayString = isJeudi
     ? `Aujourd'hui`
+    : today.getDay() === 3
+    ? `Demain`
     : today.getDay() > 4 || (isJeudi && today.getHours() > 13)
     ? 'Jeudi prochain'
     : 'Jeudi';
