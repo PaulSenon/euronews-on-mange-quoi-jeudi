@@ -25,7 +25,6 @@ export default function Home() {
   const today = new Date();
   const isJeudi = today.getDay() === 4;
   const weekId = getWeekId(today);
-  console.log({ weekId });
   const meals = ['🍕', '🍔🍟'];
   const todayString = isJeudi
     ? `Aujourd'hui`
@@ -37,7 +36,8 @@ export default function Home() {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setHasLoaded(true), 1500);
+    console.log({ weekId });
+    setTimeout(() => setHasLoaded(true), 1000);
   }, []);
 
   function getMeal() {
