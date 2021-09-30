@@ -23,16 +23,16 @@ function getWeekId(date) {
 
 export default function Home() {
   const today = new Date();
-  const isJeudi = today.getDay() === 4;
   const weekId = getWeekId(today);
   const meals = ['🍕', '🍔🍟'];
-  const todayString = isJeudi
-    ? `Aujourd'hui`
-    : today.getDay() === 3
-    ? `Demain`
-    : today.getDay() > 4 || (isJeudi && today.getHours() > 13)
-    ? 'Jeudi prochain'
-    : 'Jeudi';
+  const todayString =
+    today.getDay() === 4 && !today.getHours() >= 13
+      ? `Aujourd'hui`
+      : today.getDay() === 3
+      ? `Demain`
+      : today.getDay() >= 4
+      ? 'Jeudi prochain'
+      : 'Jeudi';
   const offset = 1;
 
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -43,7 +43,9 @@ export default function Home() {
   }, []);
 
   function getMeal() {
-    return meals[(weekId + offset) % 2];
+    const isJeudiLunchFinished =
+      (today.getDay() === 4 && today.getHours() > 13) || today.getDay() > 4;
+    return meals[(weekId + offset + (isJeudiLunchFinished ? 1 : 0)) % 2];
   }
 
   return (
