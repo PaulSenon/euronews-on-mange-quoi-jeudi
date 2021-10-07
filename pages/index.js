@@ -26,7 +26,7 @@ export default function Home() {
   const weekId = getWeekId(today);
   const meals = ['🍕', '🍔🍟'];
   const todayString =
-    today.getDay() === 4 && !today.getHours() >= 13
+    today.getDay() === 4 && today.getHours() < 13
       ? `Aujourd'hui`
       : today.getDay() === 3
       ? `Demain`
