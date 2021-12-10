@@ -45,6 +45,16 @@ export default function Home() {
   function getMeal() {
     const isJeudiLunchFinished =
       (today.getDay() === 4 && today.getHours() > 13) || today.getDay() > 4;
+    // noel
+    if (
+      today.getFullYear() === 2021 &&
+      today.getMonth() === 11 &&
+      today.getDate() > 9 &&
+      today.getDate() <= 16 &&
+      (today.getDay() !== 4 || !isJeudiLunchFinished)
+    )
+      return '🎄🥂🎉🎅';
+    // end noel
     return meals[(weekId + offset + (isJeudiLunchFinished ? 1 : 0)) % 2];
   }
 
