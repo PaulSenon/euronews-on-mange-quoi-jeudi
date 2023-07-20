@@ -22,17 +22,18 @@ function getWeekId(date) {
 }
 
 export default function Home() {
+  const plusRienNeVa = true;
   const today = new Date();
   const weekId = getWeekId(today);
   const meals = ['🍕', '🍔🍟'];
   const todayString =
-    today.getDay() === 4 && today.getHours() < 13
+    (today.getDay() === 4 && today.getHours() < 13
       ? `Aujourd'hui`
       : today.getDay() === 3
       ? `Demain`
       : today.getDay() >= 4
       ? 'Jeudi prochain'
-      : 'Jeudi';
+      : 'Jeudi');
   const offset = 0;
 
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -43,6 +44,16 @@ export default function Home() {
   }, []);
 
   function getMeal() {
+     if (plusRienNeVa) {
+      const res = [];
+      const allFoods = ['🍞', '🥐', '🥖', '🫓', '🥨', '🥯', '🥞', '🧇', '🧀', '🍖', '🍗', '🥩', '🥓', '🍔', '🍟', '🍕', '🌭', '🥪', '🌮', '🌯', '🫔', '🥙', '🧆', '🥚', '🍳', '🥘', '🍲', '🫕', '🥣', '🥗', '🍿', '🧈', '🧂', '🥫', '🍝', '🍱', '🍘', '🍙', '🍚', '🍛', '🍜', '🍠', '🍢', '🍣', '🍤', '🍥', '🥮', '🍡', '🥟', '🥠', '🥡'];
+      const howMany = Math.floor(Math.random() * 3);
+      for (let i = 0; i <= howMany; i++) {
+        res.push(allFoods[Math.floor(Math.random() * allFoods.length)]);
+      }
+      return res.join('');
+    }
+
     const isJeudiLunchFinished =
       (today.getDay() === 4 && today.getHours() > 13) || today.getDay() > 4;
     // noel
@@ -68,6 +79,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
+          {plusRienNeVa ? 'Plus rien ne va...' : ''}
+          <br/>
           {todayString} c'est{' '}
           {hasLoaded ? (
             `${getMeal()}!`
